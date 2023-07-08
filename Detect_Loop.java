@@ -1,21 +1,29 @@
-class Solution {
-    //Function to check if the linked list has a loop.
-    public static boolean detectLoop(Node head){
-        // Add code here
-        if(head== null)
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        if(head==null || head.next==null)
         return false;
-        Node hare = head;
-        Node tur = head;
-        
-        while(hare!=null && hare.next!=null){
-            
-            
-            hare = hare.next.next;
-            tur = tur.next;
-            if(hare == tur)
+        ListNode fast = head;
+        ListNode slow = head;
+
+        while(fast.next!= null && fast.next.next !=null){
+            fast = fast.next.next;
+            slow = slow.next;
+            if(fast==slow)
             return true;
+
+            
         }
-       
-       return false;
+        return false;
     }
 }
