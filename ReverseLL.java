@@ -1,23 +1,25 @@
-class Solution
-{
-    //Function to reverse a linked list.
-    Node reverseList(Node node)
-    {
-        Node p1,p2,p3;
-        p1 = null;
-        p2 = node;
-        p3 = p2.next;
-        p2.next = null;
-        while(p3!=null){
-            p1 = p2;
-            p2 = p3;
-            p3 = p3.next;
-            p2.next = p1;
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        ListNode prev = null;
+        ListNode curr = head;
+
+        while(curr!= null){
+            ListNode next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
         }
-        
-        node = p2;
-        return node; 
-        
-    
+
+        return prev;
     }
 }
